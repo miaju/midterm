@@ -1,18 +1,18 @@
 /*
- * All routes for User Data are defined here
- * Since this file is loaded in server.js into api/users,
- *   these routes are mounted onto /api/users
+ * All routes for Polls Data are defined here
+ * Since this file is loaded in server.js into api/polls,
+ *   these routes are mounted onto /api/polls
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
 const express = require('express');
 const router  = express.Router();
-const userQueries = require('../db/queries/users');
+const pollsQueries = require('../db/queries/polls');
 
 router.get('/', (req, res) => {
-  userQueries.getUsers()
-    .then(users => {
-      res.json({ users });
+  pollsQueries.getPolls()
+    .then(polls => {
+      res.json({ polls });
     })
     .catch(err => {
       res
