@@ -1,0 +1,11 @@
+DROP TABLE IF EXISTS polls CASCADE;
+
+CREATE TABLE polls (
+  id SERIAL PRIMARY KEY NOT NULL,
+  creator_email VARCHAR(255),
+  active BOOLEAN NOT NULL DEFAULT TRUE,
+  title VARCHAR(255),
+  description TEXT,
+  voter_link VARCHAR(255) NOT NULL,
+  admin_link VARCHAR(255) NOT NULL
+);
