@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Home Page</title>
+  <title>New Poll</title>
 
   <meta charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
@@ -14,12 +14,24 @@
   <link rel="stylesheet" href="/styles/layout.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/app.js"></script>
+  <script defer src="/scripts/new.js"></script>
 </head>
 
 <body>
-  <h1>Have fun! 🥔</h1>
-  <p>Want to create a new poll? <a href="/new">Create new poll here</a></p>
+  <h1>Create a poll</h1>
+  <form method="POST" action="/new">
+    <label>title: </label>
+    <br />
+    <input type="text" name="title" style="width: 300px; margin: 0.5em"/>
+    <br />
+
+    <label>description: </label>
+    <br />
+    <input type="text" name="description" style="width: 300px; margin: 0.5em"/>
+    <br />
+    <button type="submit" class="btn btn-primary">Create new poll</button>
+
+  </form>
 </body>
 
 </html>

@@ -30,6 +30,8 @@ app.use(express.static('public'));
 // Note: Feel free to replace the example routes below with your own
 const pollsRoutes = require('./routes/polls');
 const pollsApiRoutes = require('./routes/polls-api');
+const newRoutes = require('./routes/new');
+
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -37,6 +39,7 @@ const pollsApiRoutes = require('./routes/polls-api');
 // Note: mount other resources here, using the same pattern above
 app.use('/api/polls', pollsApiRoutes);
 app.use('/polls', pollsRoutes);
+app.use('/new', newRoutes);
 
 // Home page
 // Warning: avoid creating more routes in this file!
