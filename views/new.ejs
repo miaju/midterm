@@ -4,34 +4,54 @@
 <head>
   <title>New Poll</title>
 
-  <meta charset="UTF-8" >
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap" rel="stylesheet">
+
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/new.js"></script>
 </head>
 
 <body>
-  <h1>Create a poll</h1>
-  <form method="POST" action="/new">
-    <label>title: </label>
-    <br />
-    <input type="text" name="title" style="width: 300px; margin: 0.5em"/>
-    <br />
 
-    <label>description: </label>
-    <br />
-    <input type="text" name="description" style="width: 300px; margin: 0.5em"/>
-    <br />
-    <button type="submit" class="btn btn-primary">Create new poll</button>
+  <%- include('partials/_header') %>
 
-  </form>
+  <main>
+    <h4>Create a Poll</h4>
+    <form method="POST" action="/new">
+      <label>Owner Email: *</label>
+      <input type="text" name="email" placeholder="Your email" style="width: 300px; margin: 0.5em" />
+      <br>
+      <label>Poll Title: *</label>
+      <input type="text" name="title" placeholder="What is the purpose of the poll?"
+        style="width: 300px; margin: 0.5em" />
+      <br>
+      <label>Description: </label>
+      <input type="text" name="description" placeholder="Enter an optional description"
+        style="width: 300px; margin: 0.5em" />
+      <br>
+      Choices (Provide a minimum of 2 and up to 5 choices):
+      <br>
+      <input type="text" name="choice-one" placeholder="Choice 1" style="width: 300px; margin: 0.5em" />*<br>
+      <input type="text" name="choice-two" placeholder="Choice 2" style="width: 300px; margin: 0.5em" />*<br>
+      <input type="text" name="choice-three" placeholder="Choice 3 (optional)"
+        style="width: 300px; margin: 0.5em" /><br>
+      <input type="text" name="choice-four" placeholder="Choice 4 (optional)" style="width: 300px; margin: 0.5em" /><br>
+      <input type="text" name="choice-five" placeholder="Choice 5 (optional)" style="width: 300px; margin: 0.5em" /><br>
+
+      <button type="submit" class="btn btn-warning">Create new poll</button>
+
+    </form>
+  </main>
 </body>
 
 </html>

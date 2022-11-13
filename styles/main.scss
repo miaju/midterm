@@ -1,10 +1,14 @@
+nav {
+  font-family: 'Montserrat', sans-serif;
+}
+
 body {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-
+  font-family: 'Montserrat', sans-serif;
   background: rgb(163, 208, 219);
   background: linear-gradient(
     227deg,
@@ -15,4 +19,15 @@ body {
     rgba(163, 208, 219, 1) 74%,
     rgba(163, 208, 219, 1) 100%
   );
+}
+
+
+main {
+  width: 60%;
+  background-color: #e2d4bc;
+  margin: 0 auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
