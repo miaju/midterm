@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>New Poll</title>
+  <title>Decision Maker: New Poll</title>
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,33 +25,38 @@
 
   <%- include('partials/_header') %>
 
-  <main>
-    <h4>Create a Poll</h4>
-    <form method="POST" action="/new">
-      <label>Owner Email: *</label>
-      <input type="text" name="email" placeholder="Your email" style="width: 300px; margin: 0.5em" />
-      <br>
-      <label>Poll Title: *</label>
-      <input type="text" name="title" placeholder="What is the purpose of the poll?"
-        style="width: 300px; margin: 0.5em" />
-      <br>
-      <label>Description: </label>
-      <input type="text" name="description" placeholder="Enter an optional description"
-        style="width: 300px; margin: 0.5em" />
-      <br>
-      Choices (Provide a minimum of 2 and up to 5 choices):
-      <br>
-      <input type="text" name="choice-one" placeholder="Choice 1" style="width: 300px; margin: 0.5em" />*<br>
-      <input type="text" name="choice-two" placeholder="Choice 2" style="width: 300px; margin: 0.5em" />*<br>
-      <input type="text" name="choice-three" placeholder="Choice 3 (optional)"
-        style="width: 300px; margin: 0.5em" /><br>
-      <input type="text" name="choice-four" placeholder="Choice 4 (optional)" style="width: 300px; margin: 0.5em" /><br>
-      <input type="text" name="choice-five" placeholder="Choice 5 (optional)" style="width: 300px; margin: 0.5em" /><br>
+    <main>
+      <h4>Create a Poll</h4>
+      <form method="POST" action="/new">
+        <div>
+          <label>Owner Email: *</label>
+          <input type="text" name="email" placeholder="Your email" style="width: 300px; margin: 0.5em" />
+        </div>
+        <div>
+          <label>Poll Title: *</label>
+          <input type="text" name="title" placeholder="What is the purpose of the poll?"
+            style="width: 300px; margin: 0.5em" />
+        </div>
+        <div>
+          <label>Description: </label>
+          <input type="text" name="description" placeholder="Enter an optional description"
+            style="width: 300px; margin: 0.5em" />
+        </div>
+          Choices (Provide a minimum of 2 and up to 5 choices): <br>
+          <div>
+          <input type="text" name="choice-one" placeholder="Choice 1" style="width: 300px; margin: 0.5em" />*<br>
+          <input type="text" name="choice-two" placeholder="Choice 2" style="width: 300px; margin: 0.5em" />*<br>
+          <input type="text" name="choice-three" placeholder="Choice 3 (optional)"
+            style="width: 300px; margin: 0.5em" /><br>
+          <input type="text" name="choice-four" placeholder="Choice 4 (optional)"
+            style="width: 300px; margin: 0.5em" /><br>
+          <input type="text" name="choice-five" placeholder="Choice 5 (optional)"
+            style="width: 300px; margin: 0.5em" /><br>
+        </div>
+        <button type="submit" class="btn">Create new poll</button>
 
-      <button type="submit" class="btn btn-warning">Create new poll</button>
-
-    </form>
-  </main>
+      </form>
+    </main>
 </body>
 
 </html>

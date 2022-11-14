@@ -31,6 +31,8 @@ app.use(express.static('public'));
 const pollsRoutes = require('./routes/polls');
 const pollsApiRoutes = require('./routes/polls-api');
 const newRoutes = require('./routes/new');
+const voteRoutes = require('./routes/vote');
+const adminRoutes = require('./routes/admin');
 
 
 // Mount all resource routes
@@ -40,6 +42,8 @@ const newRoutes = require('./routes/new');
 app.use('/api/polls', pollsApiRoutes);
 app.use('/polls', pollsRoutes);
 app.use('/new', newRoutes);
+app.use('/vote', voteRoutes);
+app.use('/admin', adminRoutes);
 
 // Home page
 // Warning: avoid creating more routes in this file!
