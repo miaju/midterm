@@ -20,7 +20,7 @@ const getChoices = function(pollId) {
  * @return {Promise<{}>} A promise to the user.
  */
 const addChoice = function(choice) {
-  return pool
+  return db
     .query(
       `
     INSERT INTO choices (poll_id, value)
