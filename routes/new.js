@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  console.log(req);
+  console.log(req.body);
   let poll = {
     creator_email: req.body.email,
     active: true,
@@ -19,25 +19,29 @@ router.post('/', (req, res) => {
     admin_link: generateRandomString(10)
   };
   let choices = [
-    req.choice_one,
-    req.choice_two,
-    req.choice_three,
-    req.choice_four,
-    req.choice_five
+    req.body.choice_one,
+    req.body.choice_two,
+    req.body.choice_three,
+    req.body.choice_four,
+    req.body.choice_five
   ];
 
+
   pollsQueries.addPoll(poll)
-    .then((dbPoll) => {
+    .then(async(dbPoll) => {
       for (let i of choices) {
-        choiceQueries.addChoice({
-          poll_id: dbPoll.id,
-          value: i
-        })
-          .catch(err => {
-            res
-              .status(500)
-              .json({ error: err.message });
-          });
+        if (i) {
+          await choiceQueries.addChoice({
+            poll_id: dbPoll.id,
+            value: i
+          })
+            .catch(err => {
+              res
+                .status(500)
+                .json({ error: err.message });
+            });
+        }
+
       }
     })
     .then(()=> {
