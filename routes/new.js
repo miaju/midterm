@@ -45,7 +45,7 @@ router.post('/', (req, res) => {
       }
     })
     .then(()=> {
-      res.redirect('/admin');
+      res.redirect(`/admin/${poll.admin_link}`);
     })
     .catch(err => {
       res
