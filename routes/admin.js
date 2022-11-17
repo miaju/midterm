@@ -3,12 +3,8 @@ const router  = express.Router();
 const pollsQueries = require('../db/queries/polls');
 const choiceQueries = require('../db/queries/choices');
 
-router.get('/', (req, res) => {
-  res.render('admin');
-});
-
 router.get('/:id',(req,res)=>{
-  const link = req.params.id.split(':')[1];
+  const link = req.params.id;
   console.log(link);
   pollsQueries.getPollByLink(link)
   .then((result)=>{

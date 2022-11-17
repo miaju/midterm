@@ -42,18 +42,14 @@ router.post('/', (req, res) => {
       }
     })
     .then(()=> {
-      const choice = choices.reduce((re,cur)=>{
-        if(cur) re.push(cur);
-        return re;
-      },[]);
       const root = "localhost:8080/";
       const templateVars = {
-        admin_link:root.concat('admin/:',poll.admin_link),
-        voter_link:root.concat('voter/:',poll.voter_link),
-        choices:choice
+        admin_link: root.concat('admin/:', poll.admin_link),
+        voter_link: root.concat('voter/:', poll.voter_link),
+        choices: choices
       };
-      console.log("template",templateVars);//for debug only---
-      res.render('admin',templateVars);
+      console.log("template", templateVars); //for debug only---
+      res.render(`admin/${poll.admin_link}`, templateVars);
     })
     .catch(err => {
       res
