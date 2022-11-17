@@ -1,114 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <title>Decision Maker: Make a Vote</title>
-  <%- include('partials/_head') %>
-  <script defer src="/scripts/new.js"></script>
-</head>
+  <head>
+    <title>Decision Maker: Make a Vote</title>
+    <%- include('partials/_head') %>
+    <script defer src="/scripts/new.js"></script>
+  </head>
 
-<body>
+  <body>
 
-  <%- include('partials/_header') %>
-
-    <main style="margin: 1em;">
-      <h4>Vote a Poll</h4>
-      <form class="form-inline" action="/vote" method="POST">
-        <div>
-          Enter Your Name:
-        <input class="form-control" type="text" name="voter" placeholder="Your Name"
-          style="width: 300px; margin: 1em" />
-        </div>
-        <table class="vote-table">
+    <%- include('partials/_header') %>
+    <main>
+      <h4> Vote on the Poll!</h4>
+      <form action="/vote/<%= poll.voter_link %>" method="POST">
+        <input type="text" name="voter" placeholder="Your Name (optional)">
+        <table class="table">
           <thead>
             <tr>
-              <th>Choice</th>
-              <th>Ranking</th>
+              <th scope="col">Choice</th>
+              <th scope="col">Choice Ranking</th>
+
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Choice 1</td>
-              <td>
-                <form action="#">
-                  <select name="ranking1" id="rank1">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
+            <% for (let choice of choices) { %>
+              <tr>
+                <td><%= choice.value %></td>
+                <td>
+
+                  <select name="<%= choice.id %>" id="rank">
+                  <% for (let i in choices) {%>
+                    <% i ++ %>
+                    <option value="<%=i%>"><%=i%></option>
+                  <% } %>
                   </select>
-                </form>
-              </td>
-            </tr>
-            <tr>
-              <td>Choice 2</td>
-              <td>
-                <form action="#">
-
-                  <select name="ranking2" id="rank2">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                  </select>
-
-                </form>
-              </td>
-            </tr>
-            <tr>
-              <td>Choice 3</td>
-              <td>
-                <form action="#">
-
-                  <select name="ranking3" id="rank3">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                  </select>
-
-                </form>
-              </td>
-            </tr>
-            <tr>
-              <td>Choice 4</td>
-              <td>
-                <form action="#">
-
-                  <select name="ranking4" id="rank4">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                  </select>
-
-                </form>
-              </td>
-            </tr>
-            <tr>
-              <td>Choice 5</td>
-              <td>
-                <form action="#">
-
-                  <select name="ranking5" id="rank5">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                  </select>
-                </form>
-              </td>
-            </tr>
+                </td>
+              </tr>
+            <% } %>
           </tbody>
         </table>
         <button type="submit" class="btn">Submit my Vote!</button>
       </form>
     </main>
-</body>
-
+  </body>
 </html>
