@@ -42,14 +42,7 @@ router.post('/', (req, res) => {
       }
     })
     .then(()=> {
-      const root = "localhost:8080/";
-      const templateVars = {
-        admin_link: root.concat('admin/:', poll.admin_link),
-        voter_link: root.concat('voter/:', poll.voter_link),
-        choices: choices
-      };
-      console.log("template", templateVars); //for debug only---
-      res.render(`admin/${poll.admin_link}`, templateVars);
+      res.redirect(`/admin/${poll.admin_link}`);
     })
     .catch(err => {
       res
