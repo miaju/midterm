@@ -32,7 +32,6 @@ const getChoicesidandvalue = function(pollId) {
 
 const getChoicesandscore = function(pollId) {
   return db.query(`
-<<<<<<< HEAD
   SELECT choices.id,value, sum(6-votes.ranking) as score FROM choices
   join votes on choices.id = votes.choice_id
   where choices.poll_id = $1 GROUP BY choices.id,value order by choices.id ;
@@ -45,20 +44,6 @@ const getChoicesandscore = function(pollId) {
   .catch((err) => {
     console.log(err.message);
   });
-=======
-  SELECT choices.id AS choice_id, value, sum(6 - votes.ranking) AS score FROM votes
-  RIGHT JOIN choices on choices.id = votes.choice_id
-  WHERE choices.poll_id = $1
-  GROUP BY choices.id, value
-  ORDER BY choice_id;
-  `, [pollId])
-    .then((result) => {
-      return result.rows;
-    })
-    .catch((err) => {
-      console.log(err.message);
-    });
->>>>>>> 835802ab0065a271d94cfe284fab74168ff5fb5a
 };
 
 
