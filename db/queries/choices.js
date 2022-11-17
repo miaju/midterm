@@ -19,6 +19,21 @@ const getChoices = function(pollId) {
  * @param {{}} poll
  * @return {Promise<{}>} A promise to the user.
  */
+
+ const getChoicesandscore = function(pollId) {
+  return db.query(`
+  SELECT choice_id,value, sum(6-votes.ranking) as score FROM votes
+  join choices on choices.id = votes.choice_id
+  where votes.poll_id = $1 GROUP BY votes.choice_id,value order by choice_id ;
+  `,[pollId])
+  .then((result) => {
+    return result.rows;
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
+};
+
 const addChoice = function(choice) {
   return db
     .query(
@@ -40,5 +55,6 @@ const addChoice = function(choice) {
 
 module.exports = {
   getChoices,
-  addChoice
+  addChoice,
+  getChoicesandscore
 };
