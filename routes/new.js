@@ -24,8 +24,8 @@ router.post('/', (req, res) => {
     req.body.choice_four,
     req.body.choice_five
   ];
-    return pollsQueries.addPoll(poll)
-     .then(async(dbPoll) => {
+  return pollsQueries.addPoll(poll)
+    .then(async(dbPoll) => {
       poll.id = dbPoll.id;
       for (let i of choices) {
         if (i) {
@@ -42,14 +42,7 @@ router.post('/', (req, res) => {
       }
     })
     .then(()=> {
-      const root = "localhost:8080/";
-      const templateVars = {
-        admin_link: root.concat('admin/:', poll.admin_link),
-        voter_link: root.concat('voter/:', poll.voter_link),
-        choices: choices
-      };
-      console.log("template", templateVars); //for debug only---
-      res.render(`admin/${poll.admin_link}`, templateVars);
+      res.redirect(`/admin/${poll.admin_link}`);
     })
     .catch(err => {
       res
@@ -57,7 +50,7 @@ router.post('/', (req, res) => {
         .json({ error: err.message });
     });
 
-   }
+}
 
 
 
