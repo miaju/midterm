@@ -1,8 +1,15 @@
 const express = require('express');
 const router  = express.Router();
+const pollsQueries = require('../db/queries/polls');
+const choiceQueries = require('../db/queries/choices');
 
-router.get('/', (req, res) => {
-  res.render('admin');
+router.get('/:id', (req, res) => {
+  pollsQueries.getPollByLink(req.params.id)
+    .then(poll => {
+
+      res.render('admin', poll);
+    });
+
 });
 
 router.get('/:id',(req,res)=>{
