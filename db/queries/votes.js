@@ -34,6 +34,7 @@ const addVote = function(vote) {
     })
     .catch((err) => {
       console.log(err.message);
+
     });
 };
 
