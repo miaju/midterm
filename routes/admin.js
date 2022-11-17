@@ -11,6 +11,8 @@ router.get('/:id',(req,res)=>{
   pollsQueries.getPollByLink(link)
   .then((result)=>{
     if(result){
+      const title = result.title;
+      const description = result.description;
       if (link == result.voter_link){
         res.redirect(`/vote/:${link}`);
       } else if (link == result.admin_link) {
@@ -30,6 +32,8 @@ router.get('/:id',(req,res)=>{
             const templateVars = {
             admin_link:root.concat('admin/:',result.admin_link),
             voter_link:root.concat('voter/:',result.voter_link),
+            title:title,
+            description:description,
             choicesandvalue:data.choice_arr,
             score:data.aa
           };
@@ -47,7 +51,6 @@ router.get('/:id',(req,res)=>{
     console.log(err.message);
   })
 });
-
 
 
 module.exports = router;

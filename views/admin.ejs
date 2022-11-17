@@ -13,17 +13,51 @@
 
     <main>
       <div>
-        <label>Admin Link: </label>
-        Replace with actual link!!
+        <label>Admin Link:   </label>
+        <a><%=admin_link%></a>
       </div>
       <div>
-        <label>Voter Link: </label>
-        Replace with actual link!!
+        <label>Voter Link:   </label>
+        <%=voter_link%>
       </div>
-      use for loop or sth to generate results list
       <div>
-        <button type="submit" class="btn" id="refresh">Refresh Results</button>
-        <button type="submit" class="btn" id="close">Close Poll</button>
+        <label>Title:   </label>
+        <%=title%>
+      </div>
+      <div>
+        <label>Description:   </label>
+          <%=description%>
+        </div>
+      <div class = "result_choice_score">
+        <table class="table">
+          <tbody>
+            <% for ( let i of choicesandvalue) { %>
+              <tr>
+                <td>
+                  <%=i.id%>
+                </td>
+                <td>
+                  <%=i.value%>
+                </td>
+              <tr>
+            <% } %>
+          </tbody>
+        </table>
+        <table class="table">
+          <tbody>
+            <% for ( let i of score) { %>
+              <tr>
+                <td>
+                  <%=i.score%>
+                </td>
+              <tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <button type="submit" action="/admin/ref" method ="post" class="btn" id="refresh">Refresh Results</button>
+        <button type="submit" action="/admin/stop" method = "post" class="btn" id="close">Close Poll</button>
       </div>
 
     </main>
