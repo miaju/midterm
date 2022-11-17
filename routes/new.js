@@ -48,8 +48,8 @@ router.post('/', (req, res) => {
       },[]);
       const root = "localhost:8080/";
       const templateVars = {
-        admin_link:root.concat('admin/',poll.admin_link),
-        voter_link:root.concat('voter/',poll.voter_link),
+        admin_link:root.concat('admin/:',poll.admin_link),
+        voter_link:root.concat('voter/:',poll.voter_link),
         choices:choice
       };
       console.log("template",templateVars);//for debug only---
