@@ -65,7 +65,6 @@ const closePoll = (id) => {
  * @return {Promise<{}>} A promise to the user.
  */
 const addPoll = function(poll) {
-  console.log('poll', poll)
   return db
     .query(
       `
