@@ -5,4 +5,14 @@ router.get('/', (req, res) => {
   res.render('admin');
 });
 
+router.get('/:id',(req,res)=>{
+
+  console.log("ddddddd");
+  console.log(req.params);
+
+
+});
+
+
+
 module.exports = router;

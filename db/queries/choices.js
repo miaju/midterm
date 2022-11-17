@@ -30,6 +30,7 @@ const addChoice = function(choice) {
       [choice.poll_id, choice.value]
     )
     .then((result) => {
+      console.log(result.rows[0]);
       return result.rows[0];
     })
     .catch((err) => {
@@ -39,5 +40,5 @@ const addChoice = function(choice) {
 
 module.exports = {
   getChoices,
-  addChoice,
+  addChoice
 };

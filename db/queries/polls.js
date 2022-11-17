@@ -64,10 +64,12 @@ const closePoll = (id) => {
  * @return {Promise<{}>} A promise to the user.
  */
 const addPoll = function(poll) {
+  console.log('poll', poll)
   return db
     .query(
       `
     INSERT INTO polls (creator_email, active, title, description, voter_link, admin_link)
+
     VALUES ($1, $2, $3, $4, $5, $6)
     RETURNING *;
     `,
