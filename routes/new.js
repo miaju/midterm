@@ -24,8 +24,8 @@ router.post('/', (req, res) => {
     req.body.choice_four,
     req.body.choice_five
   ];
-    return pollsQueries.addPoll(poll)
-     .then(async(dbPoll) => {
+  return pollsQueries.addPoll(poll)
+    .then(async(dbPoll) => {
       poll.id = dbPoll.id;
       for (let i of choices) {
         if (i) {
@@ -57,7 +57,7 @@ router.post('/', (req, res) => {
         .json({ error: err.message });
     });
 
-   }
+}
 
 
 
