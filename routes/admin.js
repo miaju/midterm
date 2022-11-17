@@ -2,6 +2,7 @@ const express = require('express');
 const router  = express.Router();
 const pollsQueries = require('../db/queries/polls');
 const choiceQueries = require('../db/queries/choices');
+const voteQueries = require('../db/queries/votes');
 
 router.get('/', (req, res) => {
   res.render('admin');
@@ -15,35 +16,42 @@ router.get('/:id',(req,res)=>{
     if(result){
       if (link == result.voter_link){
         res.redirect(`/vote/:${link}`);
-      }
-      else if(link != result.admin_link){
-        const msg = "The link provide is not valid!";
-        res.render("/msg",{msg});
-      }
-      else {
+      } else if (link == result.admin_link) {
         const root = "localhost:8080/";
         const pollid = result.id;
-        const title = result.
-        choiceQueries.getChoicesandscore(pollid)
-        .then((result)=>{
-          /*
-          result output like below:
-          [
-              { choice_id: 4, value: 'sushi', score: '16' },
-              { choice_id: 5, value: 'ramen', score: '13' },
-              { choice_id: 6, value: 'sashimi', score: '11' }
-           ]
-          */
-          const templateVars = {
-            admin_link:root.concat('admin/:',poll.admin_link),
-            voter_link:root.concat('voter/:',poll.voter_link),
-            choicesandscore:result
-          };
-          res.render(`/:${link}`,templateVars);
+        choiceQueries.getChoicesidandvalue(pollid)
+        .then(async(choice_result)=>{
+          const choice_arr = choice_result;
+          let aa=[];
+          for(let i of choice_arr){
+            aa.push(await voteQueries.getVotesscore(i.id));
+          }
+          return {choice_arr,aa};
         })
-      }}
-  });
+          .then((data)=>{
+            //console.log("for debug use-------------",data);
+            const templateVars = {
+            admin_link:root.concat('admin/:',result.admin_link),
+            voter_link:root.concat('voter/:',result.voter_link),
+            choicesandvalue:data.choice_arr,
+            score:data.aa
+          };
+          console.log(templateVars);
+          res.render('admin',templateVars);
+          }
+          );
+        }
+
+    } else {
+      const msg = "The link provide is not valid!";
+      res.render("/msg",{msg});
+    }
+  })
+  .catch((err) => {
+    console.log(err.message);
+  })
 });
+
 
 
 module.exports = router;

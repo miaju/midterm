@@ -38,7 +38,23 @@ const addVote = function(vote) {
     });
 };
 
+const getVotesscore = function(choiceId)
+ {
+  return db.query(`
+  SELECT sum(6-ranking) as score FROM votes
+  WHERE choice_id = $1 group by choice_id order by choice_id;
+  `,[choiceId])
+    .then(data => {
+      return ((data.rows[0])?data.rows[0]:{score:0});
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
+
 module.exports = {
   getVotes,
   addVote,
+  getVotesscore
 };
