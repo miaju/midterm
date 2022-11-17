@@ -3,6 +3,7 @@ const router  = express.Router();
 const { generateRandomString } = require('../public/scripts/helpers');
 const pollsQueries = require('../db/queries/polls');
 const choiceQueries = require('../db/queries/choices');
+const  mailNewPoll  = require('../public/scripts/mail').mailNewPoll;
 
 router.get('/', (req, res) => {
   res.render('new');
@@ -42,6 +43,7 @@ router.post('/', (req, res) => {
       }
     })
     .then(()=> {
+      mailNewPoll(poll).catch(console.error);
       res.redirect(`/admin/${poll.admin_link}`);
     })
     .catch(err => {

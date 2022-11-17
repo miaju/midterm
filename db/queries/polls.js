@@ -36,7 +36,6 @@ const getPollByLink = (link) => {
     `
     , [link])
     .then(data => {
-      console.log(data.rows[0]);//for debug only
       return data.rows[0];
     });
 };
@@ -65,7 +64,6 @@ const closePoll = (id) => {
  * @return {Promise<{}>} A promise to the user.
  */
 const addPoll = function(poll) {
-  console.log('poll', poll)
   return db
     .query(
       `
@@ -88,5 +86,6 @@ module.exports = {
   getPolls,
   getPollById,
   addPoll,
-  getPollByLink
+  getPollByLink,
+  closePoll,
 };
