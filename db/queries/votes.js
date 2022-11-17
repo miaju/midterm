@@ -15,8 +15,8 @@ const getVotes = function(choiceId) {
 };
 
 /**
- * Add a new poll to the database.
- * @param {{}} poll
+ * Add a new vote to the database.
+ * @param {{}} vote
  * @return {Promise<{}>} A promise to the user.
  */
 const addVote = function(vote) {

@@ -4,10 +4,8 @@ const pollsQueries = require('../db/queries/polls');
 const choiceQueries = require('../db/queries/choices');
 const voteQueries = require('../db/queries/votes');
 
-router.get('/', (req, res) => {
-  res.render('admin');
-});
 
+<<<<<<< HEAD
 router.get('/:id',(req,res)=>{
   const link = req.params.id.split(':')[1];
   console.log(link);
@@ -50,6 +48,36 @@ router.get('/:id',(req,res)=>{
   .catch((err) => {
     console.log(err.message);
   })
+=======
+router.get('/:id', (req, res) => {
+  pollsQueries.getPollByLink(req.params.id)
+    .then((poll) => {
+      const root = "localhost:8080/";
+      const pollId = poll.id;
+      choiceQueries.getChoicesandscore(pollId)
+        .then((choices) => {
+          console.log(`choices: ${choices}`);
+          const templateVars = {
+            admin_link: root.concat('admin/:', poll.admin_link),
+            voter_link: root.concat('voter/:', poll.voter_link),
+            poll, //have all elements of polls in the db
+            choices // have choice_id, value, and score
+          };
+          console.log(templateVars);
+          res.render('admin', templateVars);
+        })
+        .catch(err => {
+          res
+            .status(500)
+            .json({ error: err.message });
+        });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+>>>>>>> 835802ab0065a271d94cfe284fab74168ff5fb5a
 });
 
 
