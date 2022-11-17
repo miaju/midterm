@@ -1,8 +1,3 @@
-
-
-
-                  <%for(let i of choicesandvalue) { %>
-                    <tr>
-                      <td><%=i></td>
-                    <tr>
-                  <% } %>
+let link = 'localhost:8080/admin/:0qAUOAMbPm'
+let a = link.split("8080");
+console.log(a[1]);
