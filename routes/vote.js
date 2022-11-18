@@ -37,6 +37,7 @@ router.post('/:id', (req, res) => {
             ranking: req.body[choice_id],
             voter_name
           };
+          console.log(vote);
           await votesQueries.addVote(vote)
             .catch(err => {
               res
@@ -45,7 +46,11 @@ router.post('/:id', (req, res) => {
             });
         }
       }
-      mailNewVote(poll).catch(console.error);
+      let mailName = voter_name
+      if (!voter_name) {
+        mailName = 'Someone';
+      }
+      mailNewVote(poll, mailName).catch(console.error);
     })
     .then(() => {
       res.redirect('/');
