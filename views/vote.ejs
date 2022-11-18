@@ -1,46 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <title>Decision Maker: Make a Vote</title>
-    <%- include('partials/_head') %>
+<head>
+  <title>Decision Maker: Make a Vote</title>
+  <%- include('partials/_head') %>
     <script defer src="/scripts/new.js"></script>
-  </head>
+</head>
 
-  <body>
+<body>
 
-    <%- include('partials/_header') %>
+  <%- include('partials/_header') %>
     <main>
-      <h4> Vote on the Poll!</h4>
+      <h4> Vote on the Poll: <%= poll.title %></h4>
       <form action="/vote/<%= poll.voter_link %>" method="POST">
-        <input type="text" name="voter" placeholder="Your Name (optional)">
-        <table class="table">
+        <input type="text" class="form-control" name="voter" placeholder="Your Name (optional)">
+        <table class="table table-hover">
           <thead>
             <tr>
               <th scope="col">Choice</th>
               <th scope="col">Choice Ranking</th>
-
             </tr>
           </thead>
           <tbody>
             <% for (let choice of choices) { %>
               <tr>
-                <td><%= choice.value %></td>
                 <td>
-
-                  <select name="<%= choice.id %>" id="rank">
-                  <% for (let i in choices) {%>
-                    <% i ++ %>
-                    <option value="<%=i%>"><%=i%></option>
-                  <% } %>
+                  <%= choice.value %>
+                </td>
+                <td>
+                  <select class="form-control" name="<%= choice.id %>" id="rank">
+                    <% for (let i in choices) {%>
+                      <% i ++ %>
+                        <option value="<%=i%>">
+                          <%=i%>
+                        </option>
+                        <% } %>
                   </select>
                 </td>
               </tr>
-            <% } %>
+              <% } %>
           </tbody>
         </table>
         <button type="submit" class="btn">Submit my Vote!</button>
       </form>
     </main>
-  </body>
+</body>
+
 </html>

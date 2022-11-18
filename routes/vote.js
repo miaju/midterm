@@ -17,7 +17,9 @@ router.get('/:id', (req, res) => {
           console.log(templateVars);
           res.render('vote', templateVars);
         });
-
+    })
+    .catch(err => {
+      res.render('msg', {msg: err.message});
     });
 
 });
