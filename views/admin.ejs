@@ -11,21 +11,46 @@
 
   <%- include('partials/_header') %>
 
-    <main>
-      <div>
-        <label>Admin Link: </label>
-        Replace with actual link!!
+  <main>
+    <a hidden id="admintoken"><%=admin_token%></a>
+    <div>
+      <label >Admin Link:   </label>
+      <a id="adminlink"><%=admin_link%></a>
+    </div>
+    <div>
+      <label>Voter Link:   </label>
+      <%=voter_link%>
+    </div>
+    <div>
+      <label>Title:   </label>
+      <%=title%>
+    </div>
+    <div>
+      <label>Description:   </label>
+        <%=description%>
       </div>
-      <div>
-        <label>Voter Link: </label>
-        Replace with actual link!!
-      </div>
-      use for loop or sth to generate results list
-      <div>
-        <button type="submit" class="btn" id="refresh">Refresh Results</button>
-        <button type="submit" class="btn" id="close">Close Poll</button>
-      </div>
-
+    <!-- <div class = "result_choice_score"> -->
+      <table class="table">
+        <tbody>
+          <% for ( let i of choices) { %>
+            <tr>
+              <td>
+                <%=i.choice_id%>
+              </td>
+              <td>
+                <%=i.value%>
+              </td>
+              <td>
+                <%=i.score%>
+              </td>
+            <tr>
+          <% } %>
+        </tbody>
+      </table>
+    <div>
+      <button id = "refresh_btn" type="submit"  class="btn">Refresh Results</button>
+      <button id = "close_btn" type="submit"  class="btn" >Close Poll</button>
+    </div>
     </main>
 </body>
 

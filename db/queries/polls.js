@@ -51,10 +51,11 @@ const closePoll = (id) => {
     UPDATE polls
     SET active = false
     WHERE id = $1
+    RETURNING *;
     `
     , [id])
     .then(data => {
-      return data.rows[0];
+      return data.rows;
     });
 };
 
