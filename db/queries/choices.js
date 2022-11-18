@@ -26,7 +26,7 @@ const getChoicesandscore = function(pollId) {
   RIGHT JOIN choices on choices.id = votes.choice_id
   WHERE choices.poll_id = $1
   GROUP BY choices.id, value
-  ORDER BY choice_id;
+  ORDER BY value;
   `, [pollId])
     .then((result) => {
       return result.rows;
