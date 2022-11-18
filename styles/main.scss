@@ -51,3 +51,15 @@ button {
   background-color: #057782;
   color: white;
 }
+
+input {
+  width: 300px;
+  margin: 0.5em;
+}
+
+.errorMsg {
+  text-align: center;
+  color: #b66824;
+  padding: 15px;
+  margin-bottom: 20px;
+}
