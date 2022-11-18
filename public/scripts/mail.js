@@ -64,7 +64,7 @@ const mailNewVote = async function(poll, voter_name) {
     to: `${poll.creator_email}`, // list of receivers
     subject: "Votes on Your Poll", // Subject line
     html: `
-    <b> ${voter_name || 'Someone'} has voted on your poll: ${poll.title}! </b>
+    <b> ${voter_name} has voted on your poll: ${poll.title}! </b>
     <p> You can find your administrative link here: localhost:8080/admin/${poll.admin_link} (This includes the current results of the poll). </p>
     <p> And this is the link to share for voting: localhost:8080/vote/${poll.voter_link} </p>
     </br>
