@@ -27,7 +27,7 @@ const mailNewPoll = async function(poll) {
     subject: "Your New Poll", // Subject line
     html: `
     <b> Congrats on making a your poll: ${poll.title}! </b>
-    <p> You can find your administrative link here: localhost:8080/admin/${poll.admin_link}. This includes the current results of the poll </p>
+    <p> You can find your administrative link here: localhost:8080/admin/${poll.admin_link} (This includes the current results of the poll). </p>
     <p> And this is the link to share for voting: localhost:8080/vote/${poll.voter_link} </p>
     </br>
     <p> Happy voting! </p>
