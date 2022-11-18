@@ -14,7 +14,6 @@ router.get('/:id', (req, res) => {
             poll,
             choices
           };
-          console.log(templateVars);
           res.render('vote', templateVars);
         });
     })
@@ -47,7 +46,11 @@ router.post('/:id', (req, res) => {
             });
         }
       }
-      mailNewVote(poll).catch(console.error);
+      let mailName = voter_name
+      if (!voter_name) {
+        mailName = 'Someone';
+      }
+      mailNewVote(poll, mailName).catch(console.error);
     })
     .then(() => {
       res.redirect('/');

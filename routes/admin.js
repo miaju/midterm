@@ -9,8 +9,6 @@ router.get('/:id', (req, res) => {
     .then((poll) => {
       choiceQueries.getChoicesandscore(poll.id)
         .then((choices) => {
-          console.log(`choices: ${choices}`);
-          const root = 'localhost:8080/';
           const templateVars = {
             admin_link:root.concat('admin/',poll.admin_link),
             voter_link:root.concat('vote/',poll.voter_link),
@@ -19,7 +17,6 @@ router.get('/:id', (req, res) => {
             description:poll.description,
             choices:choices
           };
-          //res.json(templateVars);
           res.render('admin', templateVars);
         })
         .catch(err => {
