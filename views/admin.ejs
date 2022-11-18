@@ -12,37 +12,40 @@
   <%- include('partials/_header') %>
 
   <main>
-    <a hidden id="admintoken"><%=admin_token%></a>
+    <b id="admin-poll-title"><%=poll.title%></b>
+    <div id="admin-poll-description"><%=poll.description%></div>
+    <a hidden id="admintoken"><%=poll.admin_link%></a>
+    </br>
     <div>
       <label >Admin Link:   </label>
-      <a id="adminlink"><%=admin_link%></a>
+      <a id="adminlink"> localhost:8080/admin<%=poll.admin_link%> </a>
     </div>
     <div>
       <label>Voter Link:   </label>
-      <%=voter_link%>
+      localhost:8080/vote/<%=poll.voter_link%>
     </div>
-    <div>
-      <label>Title:   </label>
-      <%=title%>
-    </div>
-    <div>
-      <label>Description:   </label>
-        <%=description%>
-      </div>
+
     <!-- <div class = "result_choice_score"> -->
       <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Choice</th>
+            <% if (choices[0].score) {%>
+              <th scope="col">Score</th>
+            <% } %>
+          </tr>
+        </thead>
         <tbody>
-          <% for ( let i of choices) { %>
+          <% for (let choice of choices) { %>
             <tr>
               <td>
-                <%=i.choice_id%>
+                <%=choice.value%>
               </td>
-              <td>
-                <%=i.value%>
-              </td>
-              <td>
-                <%=i.score%>
-              </td>
+              <% if (choice.score) {%>
+                <td>
+                  <%=choice.score%>
+                </td>
+              <% } %>
             <tr>
           <% } %>
         </tbody>
