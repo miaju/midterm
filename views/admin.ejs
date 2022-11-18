@@ -29,23 +29,24 @@
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">Choice</th>
             <% if (choices[0].score) {%>
-              <th scope="col">Score</th>
+              <th scope="col">Ranking</th>
             <% } %>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
-          <% for (let choice of choices) { %>
+          <% for (let index in choices) { %>
             <tr>
-              <td>
-                <%=choice.value%>
-              </td>
-              <% if (choice.score) {%>
+              <% if (choices[index].score) {%>
                 <td>
-                  <%=choice.score%>
+                  <%const rank = Number(index) +1 %>
+                  <%=rank%>
                 </td>
               <% } %>
+              <td>
+                <%=choices[index].value%>
+              </td>
             <tr>
           <% } %>
         </tbody>
