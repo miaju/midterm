@@ -14,7 +14,6 @@ router.get('/:id', (req, res) => {
             poll,
             choices
           };
-          console.log(templateVars);
           res.render('vote', templateVars);
         });
     })
@@ -37,7 +36,6 @@ router.post('/:id', (req, res) => {
             ranking: req.body[choice_id],
             voter_name
           };
-          console.log(vote);
           await votesQueries.addVote(vote)
             .catch(err => {
               res
