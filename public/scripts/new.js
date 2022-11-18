@@ -1,5 +1,5 @@
 // Client facing scripts here
-const { generateRandomString } = require('./helpers');
+//const { generateRandomString } = require('./helpers');
 $(() => {
   $('.button').on('click', () => {
     $.ajax({

@@ -28,6 +28,8 @@ router.post('/:id', (req, res) => {
   const voter_name = req.body.voter;
   return pollsQueries.getPollByLink(req.params.id)
     .then(async(poll) => {
+      console.log("------------",req.body,"---------",req,"++++++");
+      console.log(poll);
       for (const choice_id in req.body) {
         if (choice_id !== 'voter') {
           const vote = {

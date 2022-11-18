@@ -7,15 +7,15 @@ const choiceQueries = require('../db/queries/choices');
 router.get('/:id', (req, res) => {
   pollsQueries.getPollByLink(req.params.id)
     .then((poll) => {
-      const root = "localhost:8080/";
-      const pollId = poll.id;
-      choiceQueries.getChoicesandscore(pollId)
+      choiceQueries.getChoicesandscore(poll.id)
         .then((choices) => {
           const templateVars = {
-            admin_link: root.concat('admin/:', poll.admin_link),
-            voter_link: root.concat('voter/:', poll.voter_link),
-            poll, //have all elements of polls in the db
-            choices // have choice_id, value, and score
+            admin_link:root.concat('admin/',poll.admin_link),
+            voter_link:root.concat('vote/',poll.voter_link),
+            admin_token:poll.admin_link,
+            title:poll.title,
+            description:poll.description,
+            choices:choices
           };
           res.render('admin', templateVars);
         })
@@ -28,5 +28,22 @@ router.get('/:id', (req, res) => {
     });
 });
 
+router.post('/:id/stop',(req,res)=>{
+  const link = req.params.id;
+  pollsQueries.getPollByLink(link)
+  .then((poll)=>{
+    pollsQueries.closePoll(poll.id)
+    .then(()=>{
+      res.json({msg:"done!"});
+    })
+    .catch((err) => {
+      res.render('msg', {msg: err.message});
+    })
+  })
+  .catch((err) => {
+    res.render('msg', {msg: err.message});
+  })
+
+});
 
 module.exports = router;
