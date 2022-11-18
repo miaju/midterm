@@ -2,10 +2,14 @@
 $(()=>{
   $("#refresh_btn").on('click',(event)=>{
     event.preventDefault();
-    $.ajax({
-      method:"GET",
-      url:$("#admintoken").text()
-    })
+    window.location.reload();
+    // $.ajax({
+    //   method:"GET",
+    //   url:$("#admintoken").text(),
+    //   success:(data)=>{
+    //     console.log("here",data);
+    //   }
+    // })
   });
 
 
@@ -14,7 +18,13 @@ $(()=>{
     const link = $("#admintoken").text().concat("/stop");
     $.ajax({
       method:"POST",
-      url:link
+      url:link,
+      success:((data)=>{
+        // console.log(data);
+        window.location.href = "/";
+      })
+
     })
+
   });
 })

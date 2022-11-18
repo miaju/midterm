@@ -1,5 +1,5 @@
-const express = require('express');
-const router  = express.Router();
+const express = require("express");
+const router = express.Router();
 const { generateRandomString } = require('../public/scripts/helpers');
 const pollsQueries = require('../db/queries/polls');
 const choiceQueries = require('../db/queries/choices');

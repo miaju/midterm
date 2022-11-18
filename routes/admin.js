@@ -13,12 +13,13 @@ router.get('/:id', (req, res) => {
           const root = 'localhost:8080/';
           const templateVars = {
             admin_link:root.concat('admin/',poll.admin_link),
-            voter_link:root.concat('voter/',poll.voter_link),
+            voter_link:root.concat('vote/',poll.voter_link),
             admin_token:poll.admin_link,
             title:poll.title,
             description:poll.description,
             choices:choices
           };
+          //res.json(templateVars);
           res.render('admin', templateVars);
         })
         .catch(err => {
@@ -34,15 +35,18 @@ router.post('/:id/stop',(req,res)=>{
   const link = req.params.id;
   pollsQueries.getPollByLink(link)
   .then((poll)=>{
-    return pollsQueries.closePoll(poll.id)
-    .then((data)=>{
-      console.log("----------",data);
-      res.render('msg', {msg: "done!"});
+    pollsQueries.closePoll(poll.id)
+    .then(()=>{
+      res.json({msg:"done!"});
+    })
+    .catch((err) => {
+      res.render('msg', {msg: err.message});
     })
   })
   .catch((err) => {
     res.render('msg', {msg: err.message});
   })
+
 });
 
 module.exports = router;
