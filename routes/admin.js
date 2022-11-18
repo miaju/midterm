@@ -11,14 +11,12 @@ router.get('/:id', (req, res) => {
       const pollId = poll.id;
       choiceQueries.getChoicesandscore(pollId)
         .then((choices) => {
-          console.log(`choices: ${choices}`);
           const templateVars = {
             admin_link: root.concat('admin/:', poll.admin_link),
             voter_link: root.concat('voter/:', poll.voter_link),
             poll, //have all elements of polls in the db
             choices // have choice_id, value, and score
           };
-          console.log(templateVars);
           res.render('admin', templateVars);
         })
         .catch(err => {

@@ -42,7 +42,7 @@ const mailNewPoll = async function(poll) {
   // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
 };
 
-const mailNewVote = async function(poll) {
+const mailNewVote = async function(poll, voter_name) {
   // Generate test SMTP service account from ethereal.email
   // Only needed if you don't have a real mail account for testing
   let testAccount = await nodemailer.createTestAccount();
@@ -64,7 +64,7 @@ const mailNewVote = async function(poll) {
     to: `${poll.creator_email}`, // list of receivers
     subject: "Votes on Your Poll", // Subject line
     html: `
-    <b> Someone has voted on your poll: ${poll.title}! </b>
+    <b> ${voter_name} has voted on your poll: ${poll.title}! </b>
     <p> You can find your administrative link here: localhost:8080/admin/${poll.admin_link} (This includes the current results of the poll). </p>
     <p> And this is the link to share for voting: localhost:8080/vote/${poll.voter_link} </p>
     </br>
