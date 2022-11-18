@@ -29,8 +29,6 @@ router.get('/:id', (req, res) => {
 });
 
 
-module.exports = router;
-
 router.post('/:id/stop',(req,res)=>{
   const link = req.params.id;
   pollsQueries.getPollByLink(link)

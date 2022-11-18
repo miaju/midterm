@@ -25,11 +25,9 @@ router.get('/:id', (req, res) => {
 
 
 router.post('/:id', (req, res) => {
-  const voter_name = req.body.voter;
+  let voter_name = req.body.voter;
   return pollsQueries.getPollByLink(req.params.id)
     .then(async(poll) => {
-      console.log("------------",req.body,"---------",req,"++++++");
-      console.log(poll);
       for (const choice_id in req.body) {
         if (choice_id !== 'voter') {
           const vote = {
@@ -46,11 +44,10 @@ router.post('/:id', (req, res) => {
             });
         }
       }
-      let mailName = voter_name
       if (!voter_name) {
-        mailName = 'Someone';
+        voter_name = 'Someone';
       }
-      mailNewVote(poll, mailName).catch(console.error);
+      mailNewVote(poll, voter_name).catch(console.error);
     })
     .then(() => {
       res.redirect('/');
