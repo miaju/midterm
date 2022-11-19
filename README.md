@@ -1,16 +1,5 @@
-LHL Node Skeleton
+LHL Midterm Project: Decision Makr
 =========
-
-## Project Setup
-
-The following steps are only for _one_ of the group members to perform.
-
-1. Create your own copy of this repo using the `Use This Template` button, ideally using the name of your project. The repo should be marked Public
-2. Verify that the skeleton code now shows up in your repo on GitHub, you should be automatically redirected
-3. Clone your copy of the repo to your dev machine
-4. Add your team members as collaborators to the project so that they can push to this repo
-5. Let your team members know the repo URL so that they use the same repo (they should _not_ create a copy/fork of this repo since that will add additional workflow complexity to the project)
-
 
 ## Getting Started
 
@@ -37,8 +26,30 @@ The following steps are only for _one_ of the group members to perform.
   - It runs through each of the files, in order, and executes them against the database. 
   - Note: you will lose all newly created (test) data each time this is run, since the schema files will tend to `DROP` the tables and recreate them.
 
+## Planning and Final Product
+- [User stories and project planning](https://docs.google.com/document/d/1ItWgjM_ccWPtv-EIqeQDQ3-iT91uW4oHItH7x82KtnM/edit?usp=sharing)
+- [Wireframe](https://www.figma.com/file/Q68LekRzeEsw6xQ4Dk9G3H/decisionMakr?node-id=0%3A1)
+- Please see the screen shot of product below:
+!["Home Page"](/docs/front.png)
+Home Page. Product information is provided, and users can be directed to create a poll and learn more about Borda count through the link.
+!["New Poll"](/docs/new.png)
+Create a New Poll. After filling out the information for creating the poll, it will direct the user to the admin page. Upon creation of the poll, admin and voter links will be sent to the email provided by the user.
+!["Vote on a Poll"](/docs/vote.png)
+Vote on a Poll! Use can choose the desired rank for each choice and submit their vote. Email notification of getting a new vote will be sent to the admin of the poll.
+!["Vote on a Poll"](/docs/admin.png)
+Admin Page (can view/refresh results and close the poll).
+The ranking of each choice is calculated based on the score.
+
 ## Dependencies
 
 - Node 10.x or above
 - NPM 5.x or above
 - PG 6.x
+- Express
+- EJS
+- morgan
+- mailgun.js
+- sass
+- chalk
+- nodemailer
+
