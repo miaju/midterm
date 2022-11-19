@@ -40,13 +40,14 @@
           </tr>
         </thead>
         <tbody>
+          <%const sups = ['st', 'nd', 'rd', 'th', 'th']%>
           <% for (let index in choices) { %>
             <tr>
               <% if (choices[index].score) {%>
                 <td>
                   <%const rank = Number(index) +1 %>
                   <b>
-                    <%=rank%><sup>o</sup>
+                    <%=rank%><sup><%=sups[index]%></sup>
                   </b>
                 </td>
               <% } %>
