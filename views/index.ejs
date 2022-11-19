@@ -4,16 +4,21 @@
 <head>
   <title>Decision Maker: Home Page</title>
   <%- include('partials/_head') %>
-  <script defer src="/scripts/app.js"></script>
+    <script defer src="/scripts/app.js"></script>
 </head>
 
 <body>
 
   <%- include('partials/_header') %>
 
-  <main>
-    <p>Want to create a new poll? <a href="/new">Create new poll here</a></p>
-  </main>
+    <main>
+      <p>Create a poll where user can rank the choices based on their preference.</p>
+      <p>Want to create a new poll? </p>
+      <button class="btn" onclick="window.location.href='/new';">Create new poll here</button><br>
+      <p>The results are ranked using the <a href="https://en.wikipedia.org/wiki/Borda_count" target="_blank"
+          rel="noopener noreferrer">Borda Count</a> method.</p>
+
+    </main>
 </body>
 
 </html>
