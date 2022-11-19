@@ -21,12 +21,12 @@
     <div>
       <label >Admin Link:   </label>
       <input type="text" value="localhost:8080/admin/<%=poll.admin_link%> " id="adminlink" readonly>
-      <button onclick="adminCopy()">Copy</button>
+      <button class="btn" onclick="adminCopy()">Copy</button>
     </div>
     <div>
       <label>Voter Link:   </label>
       <input type="text" value="localhost:8080/vote/<%=poll.voter_link%> " id="voterlink" readonly>
-      <button onclick="voterCopy()">Copy</button>
+      <button class="btn" onclick="voterCopy()">Copy</button>
     </div>
 
     <!-- <div class = "result_choice_score"> -->
@@ -34,7 +34,7 @@
         <thead>
           <tr>
             <% if (choices[0].score) {%>
-              <th scope="col">Ranking</th>
+              <th scope="col"><b>Ranking</b></th>
             <% } %>
             <th scope="col"></th>
           </tr>
@@ -45,7 +45,9 @@
               <% if (choices[index].score) {%>
                 <td>
                   <%const rank = Number(index) +1 %>
-                  <%=rank%>
+                  <b>
+                    <%=rank%><sup>o</sup>
+                  </b>
                 </td>
               <% } %>
               <td>
