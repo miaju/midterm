@@ -18,11 +18,13 @@
     </br>
     <div>
       <label >Admin Link:   </label>
-      <a id="adminlink"> localhost:8080/admin/<%=poll.admin_link%> </a>
+      <input type="text" value="localhost:8080/admin/<%=poll.admin_link%> " id="adminlink" readonly>
+      <button onclick="adminCopy()">Copy</button>
     </div>
     <div>
       <label>Voter Link:   </label>
-      localhost:8080/vote/<%=poll.voter_link%>
+      <input type="text" value="localhost:8080/vote/<%=poll.voter_link%> " id="voterlink" readonly>
+      <button onclick="voterCopy()">Copy</button>
     </div>
 
     <!-- <div class = "result_choice_score"> -->
