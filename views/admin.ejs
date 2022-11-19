@@ -10,8 +10,10 @@
 <body>
 
   <%- include('partials/_header') %>
-
+  <notif><a>Poll <b><%=poll.title%> </b>created successfully! Link has been sent to <b><%=poll.creator_email%></b></a>
+  </notif>
   <main>
+
     <b id="admin-poll-title"><%=poll.title%></b>
     <div id="admin-poll-description"><%=poll.description%></div>
     <a hidden id="admintoken"><%=poll.admin_link%></a>
