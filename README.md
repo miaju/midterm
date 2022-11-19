@@ -31,14 +31,14 @@ LHL Midterm Project: Decision Makr
 - [Wireframe](https://www.figma.com/file/Q68LekRzeEsw6xQ4Dk9G3H/decisionMakr?node-id=0%3A1)
 - Please see the screen shot of product below:
 !["Home Page"](/docs/front.png)
-Home Page. Product information is provided, user can be directed to create a poll and learn more about borda count through the link.
+Home Page. Product information is provided, and users can be directed to create a poll and learn more about Borda count through the link.
 !["New Poll"](/docs/new.png)
-Create a New Poll. After filled out the information for creating the poll, it will direct user to the admin page.
+Create a New Poll. After filling out the information for creating the poll, it will direct the user to the admin page. Upon creation of the poll, admin and voter links will be sent to the email provided by the user.
 !["Vote on a Poll"](/docs/vote.png)
-Vote on a Poll! Use can choose desired rank for each choice and submit their vote. Email notification of getting new vote will be sent to the admin of the poll.
+Vote on a Poll! Use can choose the desired rank for each choice and submit their vote. Email notification of getting a new vote will be sent to the admin of the poll.
 !["Vote on a Poll"](/docs/admin.png)
-Admin Page (can view/refresh result and close the poll).
-Ranking of each choice is calculated based on the score.
+Admin Page (can view/refresh results and close the poll).
+The ranking of each choice is calculated based on the score.
 
 ## Dependencies
 
